@@ -1,6 +1,6 @@
 # Equinix Metal Cookbook
 
-Recipe for using and deploying blockchain networks using Sextant on Equinix Metal
+Recipe for setting up kubernetes cluster on Equnix Metal and installing Sextant for using and deploying blockchain networks.
 
 ## Setting up for Equinix Metal
 
@@ -14,8 +14,8 @@ Recipe for using and deploying blockchain networks using Sextant on Equinix Meta
 * Select Servers/On Demand
 * Choose a location (Amsterdam, Chicago, Dallas, etc.)
 * Choose a Server Type (we used `c3.small.x86`)
-* Choose an Operating System (we tested RKE2 on `Ubuntu 18.04LTS` and `Ubuntu 20.04LTS`)
-* Select number of servers and server names (we used 3-6 servers, with the default hostnames)
+* Choose an Operating System. [RKE documentation lists supported versions](https://docs.rke2.io/install/requirements/) (we tested RKE2 on `Ubuntu 18.04LTS` and `Ubuntu 20.04LTS`)
+* Select number of servers and server names. It is recommened to use at least three servers nodes for HA, and any number after can be used as agent nodes. (we used three servers for the Admin cluster for Sextant, and between 5-6 for the three blockchain network clusters).
 * Optionally "Add user data" (handy feature to customize server provisioning)
 * Optionally "Configure IPs" (we kept defaults)
 * Optionally "Customize SSH keys" (we are using using keys already configured for the project)
@@ -169,3 +169,6 @@ helm repo add metallb https://metallb.github.io/metallb
 kubectl create namespace metallb-system
 helm -n metallb-system install metallb metallb/metallb -f <config file from step 2.yaml>
 ```
+
+## Setting up Sextant
+[Link to Sextant Install goes here](https://docs.blockchaintp.com/en/latest/sextant/daml/overview/)
