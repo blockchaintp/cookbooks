@@ -305,6 +305,7 @@ Note that these details will persist even if you restart or delete/reinstall Sex
 ### Accessing Sextant
 
 #### Option 1 - Port Forwarding
+
 You can use port forwarding using this command:
 
 ```bash
@@ -318,6 +319,7 @@ http://localhost:8080
 ```
 
 #### Option 2 - Using Load Balancer
+
 If you want a persistent connection to your Sextant | Enterprise instance, you will need to create a load balancer.
 
 (_Note that while this is acceptable for this evaluation we recommend setting up a k8s ingress controller for long term access._)
