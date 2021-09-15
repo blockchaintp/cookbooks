@@ -1,7 +1,7 @@
 # Equinix Metal Cookbook
 
-Recipe for setting up a Kubernetes cluster on Equinix Metal and installing Sextant
-for using and deploying blockchain networks.
+Recipe for setting up a Kubernetes cluster on Equinix Metal and installing
+Sextant to deploy and manage blockchain networks.
 
 ## Install Prerequisite Tools
 
@@ -26,9 +26,11 @@ You will need the up to date versions of the following tools installed -
 * Choose an Operating System. [RKE documentation lists supported
   versions](https://docs.rke2.io/install/requirements/) (_We tested RKE2 on
   `Ubuntu 18.04LTS` and `Ubuntu 20.04LTS`_).
-* Select the number of servers and server names. We recommend using at least three servers as controllers for HA when creating Kubernetes cluster, and any number after can be used as agent nodes.
-  (_In our project we used three servers for the Admin cluster for Sextant and between 5-6 for
-  the three blockchain network clusters_).
+* Select the number of servers and server names. We recommend using at least
+  three servers as controllers for HA when creating Kubernetes cluster, and any
+  number after can be used as agent nodes.
+  (_In our project we used three servers for the Admin cluster for Sextant
+  and between 5-6 for the three blockchain network clusters_).
 * Optionally `Add user data` (_handy feature to customize server provisioning_).
 * Optionally `Configure IPs` (_we kept defaults_).
 * Optionally `Customize SSH keys` (_we are using keys already configured for the
@@ -36,7 +38,9 @@ You will need the up to date versions of the following tools installed -
 
 ## Set up BGP
 
-* Set up [Local BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/) for the project.
+* Set up
+  [Local BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/)
+  for the project.
 * For each deployed server under Details/BGP/Manage, click on `Enable BGP`
   (_Note: you should enable BGP on at least two servers, preferably all_).
 
@@ -98,7 +102,8 @@ systemctl enable rke2-server.service;
 systemctl start rke2-server.service
 ```
 
-* Optionally for fourth+ servers enable/start `rke2-agent.service` instead of `rke2-server.service`:
+* Optionally for fourth+ servers enable/start `rke2-agent.service`
+  instead of `rke2-server.service`:
 
 ```bash
 curl -sfL https://get.rke2.io | INSTALL_RKE2_CHANNEL=v1.21 sh - ;
@@ -201,9 +206,17 @@ helm -n metallb-system install metallb metallb/metallb \
 
 ## Installing Sextant on Equinix Metal
 
+### Sign up for Evaluation
+
+If you haven't done so already please sign up for an evaluation
+[here](https://www.blockchaintp.com/sextant/equinix-metal) in order to obtain
+credentials
+
 ### Prepare Cluster
 
-* Use [helm repo](https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories) command to add BTP repo:
+* Use
+  [helm repo](https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories)
+  command to add BTP repo:
 
 ```bash
 helm repo add sextant https://btp-charts-stable.s3.amazonaws.com/charts/
@@ -216,7 +229,9 @@ kubectl create namespace sextant
 kubectl config set-context --current --namespace=sextant
 ```
 
-* Add Kubernetes secrets for the BTP repo: (_Contact BTP Support for access_)
+* Assuming you've signed up for an [evaluation](#sign-up-for-evaluation) above, use the
+  credentials provided by BTP to create a Kubernetes secret so you can access
+  the BTP repo:
 
 ```bash
 CLIENT_UNAME=<'client name'>
@@ -224,12 +239,12 @@ CLIENT_EMAIL=<'client email'>
 CLIENT_PWORD=<'client password'>
 
 kubectl create secret docker-registry btp-lic \
---docker-server=https://dev.catenasys.com:8084/ --docker-username=$CLIENT_UNAME \
---docker-password=$CLIENT_PWORD --docker-email=$CLIENT_EMAIL
+  --docker-server=https://dev.catenasys.com:8084/ --docker-username=$CLIENT_UNAME \
+  --docker-password=$CLIENT_PWORD --docker-email=$CLIENT_EMAIL
 ```
 
 * Create Sextant helm chart values file `values-equinix-demo.yaml`:
-  
+
 ```yaml
 sextant:
   imagePullSecrets:
@@ -299,8 +314,10 @@ Run this command:
 kubectl describe pod/equinix-demo-sextant-enterprise-0|grep INITIAL_
 ```
 
-Make a note of the username and password for admin access to Sextant | Enterprise. You will need these to log into Sextant | Enterprise.
-Note that these details will persist even if you restart or delete/reinstall Sextant | Enterprise.
+Make a note of the username and password for admin access to
+Sextant | Enterprise. You will need these to log into Sextant | Enterprise.
+Note that these details will persist even if you restart or delete/reinstall
+Sextant | Enterprise.
 
 ### Accessing Sextant
 
@@ -320,13 +337,15 @@ http://localhost:8080
 
 #### Option 2 - Using Load Balancer
 
-If you want a persistent connection to your Sextant | Enterprise instance, you will need to create a load balancer.
+If you want a persistent connection to your Sextant | Enterprise instance,
+you will need to create a load balancer.
 
-(_Note that while this is acceptable for this evaluation we recommend setting up a k8s ingress controller for long term access._)
+(_Note that while this is acceptable for this evaluation we recommend setting
+up a k8s ingress controller for long term access._)
 
 ```bash
 kubectl expose pod/equinix-demo-sextant-enterprise-0 --type=LoadBalancer \
---name=equinix-demo-sextant-enterprise-0-lb --port=80 --target-port=80
+  --name=equinix-demo-sextant-enterprise-0-lb --port=80 --target-port=80
 ```
 
 Obtain external IP:

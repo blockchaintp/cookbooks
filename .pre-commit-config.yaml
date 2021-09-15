@@ -80,22 +80,11 @@ repos:
           - --pattern
           - '^(?!((fix|feature)\/[a-zA-Z0-9\-]+)$).*'
       - id: trailing-whitespace
-  - repo: https://github.com/Lucas-C/pre-commit-hooks-go
-    rev: v1.0.1
-    hooks:
-      - id: checkmake
-        include: "^(.*/?Makefile|.*.mk)$"
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.1.10
     hooks:
       - id: forbid-tabs
         exclude: "^(.*/?Makefile|.*.mk|.*.go)$"
-  - repo: git://github.com/doublify/pre-commit-go
-    rev: 208a4aaa7f86b44e961eaaea526743b920e187a0
-    hooks:
-      - id: fmt
-      - id: vet
-      - id: fix
   - repo: https://github.com/doublify/pre-commit-rust
     rev: v1.0
     hooks:
