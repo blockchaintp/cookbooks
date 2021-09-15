@@ -206,7 +206,7 @@ helm -n metallb-system install metallb metallb/metallb \
 
 ## Installing Sextant on Equinix Metal
 
-### <a name="sign-up"></a>Sign up for Evaluation
+### Sign up for Evaluation
 
 If you haven't done so already please sign up for an evaluation
 [here](https://www.blockchaintp.com/sextant/equinix-metal) in order to obtain
@@ -229,7 +229,7 @@ kubectl create namespace sextant
 kubectl config set-context --current --namespace=sextant
 ```
 
-* Assuming you've signed up for an [evaluation](#sign-up) above, use the
+* Assuming you've signed up for an [evaluation](#sign-up-for-evaluation) above, use the
   credentials provided by BTP to create a Kubernetes secret so you can access
   the BTP repo:
 
