@@ -1,7 +1,6 @@
 # Equinix Metal Cookbook
 
-Recipe for setting up a Kubernetes cluster on Equinix Metal and installing Sextant
-for using and deploying blockchain networks.
+Recipe for setting up a Kubernetes cluster on Equinix Metal and installing Sextant to deploy and manage blockchain networks.
 
 ## Install Prerequisite Tools
 
@@ -201,6 +200,10 @@ helm -n metallb-system install metallb metallb/metallb \
 
 ## Installing Sextant on Equinix Metal
 
+### <a name="sign-up"></a>Sign up for Evaluation
+
+If you haven't done so already please sign up for an evaluation [here](https://www.blockchaintp.com/sextant/equinix-metal) in order to obtain credentials
+
 ### Prepare Cluster
 
 * Use [helm repo](https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories) command to add BTP repo:
@@ -216,7 +219,8 @@ kubectl create namespace sextant
 kubectl config set-context --current --namespace=sextant
 ```
 
-* Add Kubernetes secrets for the BTP repo: (_Contact BTP Support for access_)
+* Assuming you've signed up for an [evaluation](#sign-up) above, use the credentials provided by BTP to create a Kubernetes secret so you can access the BTP repo:
+
 
 ```bash
 CLIENT_UNAME=<'client name'>
