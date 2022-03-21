@@ -1,2 +1,9 @@
-site_name: Cookbooks
+site_name: BTP Cookbooks
 theme: readthedocs
+copyright: Copyright &copy; 2022 Blockchain Technology Partners
+extra_css: [extra.css]
+markdown_extensions:
+  - attr_list
+  - admonition
+  - toc:
+      permalink: true
