@@ -6,7 +6,7 @@ and manage blockchain networks.
 
 ## Prerequisites
 
-* SUSE Rancher v2.6 or later with a Kubernetes cluster v1.19 or later
+* [SUSE Rancher](https://www.suse.com/products/suse-rancher/) v2.6 or later with a Kubernetes cluster v1.19 or later
 * [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) configured to access your cluster
 
 ## Sign up for an evaluation licence
