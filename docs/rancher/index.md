@@ -1,18 +1,17 @@
-# Rancher Cookbook
+# SUSE Rancher Cookbook
 
 Recipe for installing
-Sextant | Community edition on a Rancher managed kubernetes cluster to deploy
+Sextant Community edition on a Rancher managed kubernetes cluster to deploy
 and manage blockchain networks.
 
-## Install Prerequisite Tools
+## Prerequisites
 
-You will need the up-to-date versions of the following tools installed -
-
-* [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
+* SUSE Rancher v2.6 or later with a Kubernetes cluster v1.19 or later
+* [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) configured to access your cluster
 
 ## Sign up for an evaluation licence
 
-To install Sextant | Community edition, you will need credentials
+To install Sextant Community edition, you will need credentials
 supplied by BTP.
 
 Please complete this form to request credentials: [https://www.blockchaintp.com/sextant/suse-rancher](https://www.blockchaintp.com/sextant/suse-rancher)
@@ -24,35 +23,6 @@ with the exception of Daml support which is subject to our [Evaluation EULA](htt
 Find out more at [blockchaintp.com/sextant](https://www.blockchaintp.com/sextant)
 
 For documentation, visit [docs.blockchaintp.com](https://docs.blockchaintp.com)
-
-## Create a cluster and set up Rancher
-
-We will use an AWS EKS cluster, which will both run Rancher server and act as
-the cluster for our Sextant install.
-
-Follow the standard Rancher instructions to set up an EKS
-cluster for Rancher: [Installing Rancher on Amazon EKS](https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/amazon-eks/)
-
-Once you have the cluster set up, install
-Rancher: [Installing the Rancher Helm chart](https://rancher.com/docs/rancher/v2.6/en/installation/install-rancher-on-k8s/#install-the-rancher-helm-chart)
-
-You will also need access to the cluster from your local machine via kubectl.
-If needed, you can get credentials for the cluster using eksctl:
-
-1 - Get the name of your cluster:
-
-```bash
-eksctl get clusters
-```
-
-2 - Get kubeconfig credentials
-
-```bash
-eksctl utils write-kubeconfig --cluster=rancher-server [--kubeconfig=<path>]
-```
-
-You should now have Rancher installed on your eksctl cluster and
-accessible via URL
 
 ## Install Sextant
 
@@ -71,9 +41,9 @@ namespace called `sextant` in this example.
 
 Choose a name for your install, we will leave the default name of sextant
 
-![Namespace and Name](../images/rancher/install-metadata.png)
-
 Click the Next button on the bottom right of the page.
+
+![Namespace and Name](../images/rancher/install-metadata.png)
 
 !!!Important
     Make sure you have your BTP supplied credentials ready. These can be
