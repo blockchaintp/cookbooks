@@ -1,7 +1,7 @@
 # Equinix Metal Cookbook
 
 Recipe for setting up a Kubernetes cluster on Equinix Metal and installing
-_Sextant | Enterprise_ to deploy and manage blockchain networks.
+Sextant Enterprise Edition to deploy and manage blockchain networks.
 
 ## Install Prerequisite Tools
 
@@ -30,7 +30,7 @@ You will need the up to date versions of the following tools installed -
   three servers as controllers for HA when creating Kubernetes cluster, and any
   number after can be used as agent nodes.
   (**Note**: in our project we used three servers for the Admin cluster for
-  *Sextant | Enterprise* and between 5-6 for the three blockchain network
+  Sextant and between 5-6 for the three blockchain network
   clusters).
 * Optionally `Add user data` (_handy feature to customize server provisioning_).
 * Optionally `Configure IPs` (_we kept defaults_).
@@ -87,7 +87,7 @@ balancing, only to find that there is a conflict with MetalLB we plan to use for
 our deployments ingress. For our project, we opted to use individual system IPs
 for cluster access. If the first system fails, swap that IP of the failed RKE2
 Server with another RKE2 Server node in `/etc/rancher/rke2/config.yaml` on all
-nodes, as well your local workstation kubeconfig and *Sextant | Enterprise*.
+nodes, as well your local workstation kubeconfig and Sextant.
 For a Kubernetes enterprise cluster, we strongly recommend setting up a load
 balancer for the cluster access. One solution is to use Equinix guide to set up
 [HAProxy load balancer](https://metal.equinix.com/developers/guides/load-balancing-ha/)
@@ -206,7 +206,7 @@ helm -n metallb-system install metallb metallb/metallb \
   -f <config file from step 2.yaml>
 ```
 
-## Installing *Sextant | Enterprise* on Equinix Metal
+## Installing Sextant Enterprise Edition on Equinix Metal
 
 ### Sign up for Evaluation
 
@@ -224,7 +224,7 @@ credentials
 helm repo add sextant https://btp-charts-stable.s3.amazonaws.com/charts/
 ```
 
-* Create namespace `sextant` for *Sextant | Enterprise*:
+* Create namespace `sextant` for Sextant:
 
 ```bash
 kubectl create namespace sextant
@@ -246,7 +246,7 @@ kubectl create secret docker-registry btp-lic \
   --docker-password=$CLIENT_PWORD --docker-email=$CLIENT_EMAIL
 ```
 
-* Create *Sextant | Enterprise* helm chart values
+* Create Sextant Enterprise Edition helm chart values
   file `values-equinix-demo.yaml`:
 
 ```yaml
@@ -282,9 +282,9 @@ networkPolicy:
   enabled: true
 ```
 
-### Install *Sextant | Enterprise*
+### Install Sextant
 
-* Install *Sextant | Enterprise* using `helm`:
+* Install Sextant using `helm`:
 
 ```bash
 helm install -f values-equinix-demo.yaml equinix-demo sextant/sextant-enterprise
@@ -323,7 +323,7 @@ Make a note of the username and password for admin access to
 Note that these details will persist even if you restart or delete/reinstall
 *Sextant | Enterprise*.
 
-### Accessing *Sextant | Enterprise*
+### Accessing Sextant
 
 #### Option 1 - Port Forwarding
 
@@ -341,7 +341,7 @@ http://localhost:8080
 
 #### Option 2 - Using Load Balancer
 
-If you want a persistent connection to your *Sextant | Enterprise* instance,
+If you want a persistent connection to your Sextant instance,
 you will need to create a load balancer.
 
 (_Note that while this is acceptable for this evaluation we recommend setting
@@ -358,7 +358,7 @@ Obtain external IP:
 kubectl get all -o wide | grep LoadBalancer | awk '{print $4}'
 ```
 
-Connect to *Sextant | Enterprise*:
+Connect to Sextant:
 
 ```bash
 http://<EXTERNAL-IP>:80

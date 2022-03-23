@@ -1,7 +1,7 @@
 # SUSE Rancher Cookbook
 
 Recipe for installing
-Sextant Community edition on a Rancher managed kubernetes cluster to deploy
+Sextant Community Edition on a Rancher managed kubernetes cluster to deploy
 and manage blockchain networks.
 
 ## Prerequisites
@@ -16,22 +16,25 @@ supplied by BTP.
 
 Please complete this form to request credentials: [https://www.blockchaintp.com/sextant/suse-rancher](https://www.blockchaintp.com/sextant/suse-rancher)
 
-Note:
-Use of the Sextant Community Edition is governed by our [Marketplace EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Marketplace)+End+User+License+Agreement.pdf)
-with the exception of Daml support which is subject to our [Evaluation EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Evaluation)+End+User+License+Agreement.pdf)
+!!!Important
+    Use of the Sextant Community Edition is governed by our
+    [Marketplace EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Marketplace)+End+User+License+Agreement.pdf)
+    with the exception of Daml support which is subject to our
+    [Evaluation EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Evaluation)+End+User+License+Agreement.pdf).
 
-Find out more at [blockchaintp.com/sextant](https://www.blockchaintp.com/sextant)
+### Useful links
 
-For documentation, visit [docs.blockchaintp.com](https://docs.blockchaintp.com)
+* [Sextant Overview](https://www.blockchaintp.com/sextant)
+* [Sextant Docs](https://docs.blockchaintp.com/en/latest/sextant/overview/)
 
 ## Install Sextant
 
 Log in to Rancher and select the cluster you want to install Sextant on,
-in our example, this will be the local cluster
+in our example, this will be the local cluster.
 
 ![Local Rancher cluster](../images/rancher/local-cluster.png)
 
-From the left menu, select Apps & Marketplace and then Charts.
+From the left menu, select _Apps & Marketplace_ and then _Charts_.
 Choose the Sextant chart from the list of partner charts
 
 ![Partner Charts](../images/rancher/partner-charts.png)
@@ -50,20 +53,20 @@ Click the Next button on the bottom right of the page.
     requested at [https://www.blockchaintp.com/sextant/suse-rancher](https://www.blockchaintp.com/sextant/suse-rancher)
 
 On this screen you can configure your Sextant install, the only required fields
-are your `Username` and `Password` as supplied by BTP.
+are your `Username` and `Password` credentials provided by BTP.
 
 If you'd like to enable an ingress for Sextant, or use an external
 Postgres database, you can edit these settings as needed.
 
 For our example install, we will leave everything as default.
 
-Enter your user credentials in the form, and then click the Install button
+Enter your user credentials in the form, and then click the _Install_ button
 on the bottom right of the page.
 
 ![User Credentials](../images/rancher/user-credentials.png)
 
 Rancher will now install Sextant on your local cluster, it may take a few
-minutes for the Sextant images to be pulled down to your cluster
+minutes for the Sextant images to be pulled down to your cluster from our private repo.
 
 ![Installing Sextant](../images/rancher/installing-sextant.png)
 
@@ -126,36 +129,18 @@ retrieved earlier
 
 ![Sextant UI](../images/rancher/sextant-ui.png)
 
-## Add a cluster to Sextant
+At this point you are all set to start using Sextant to deploy and manage
+blockchain networks.
 
-You can now add your Kubernetes cluster to Sextant
-
-Once you're logged in to Sextant, select Clusters:
-
-![Clusters](../images/rancher/no-clusters.png)
-
-On the Clusters page, click on the Add button top right. This will take you to
-the following screen:
-
-![Add cluster](../images/rancher/add-cluster.png)
-
-Follow the instructions to download and run the create-service.sh script,
-making sure that your kubectl context is set to the correct target cluster.
-Then run the get-values.sh script:
-
-![Run scripts](../images/rancher/get-values.png)
-
-Complete the form, choosing a meaningful name and copying the results of
-running the get-values.sh script    .
-
-In this case we are using demo-cluster
-
-![Add cluster](../images/rancher/cluster-values.png)
-
-Click the Activate button and you should see your cluster added to the list of
-available target clusters:
-
-![Cluster List](../images/rancher/cluster-list.png)
+The first thing you will need to do is add a cluster to Sextant. Detailed
+instructions on how to do this can be found
+[here](https://docs.blockchaintp.com/en/latest/sextant/clusters/management/).
 
 !!!Note
-    You can find full documentation on interacting with clusters in our [docs](https://docs.blockchaintp.com/en/latest/sextant/clusters/management/)
+    Assuming that your local cluster has at least four nodes you can add this to
+    Sextant.
+
+!!!Important
+    To access all Sextant's features you can also apply for a Sextant
+    Enterprise Edition evaluation
+    [here](https://www.blockchaintp.com/sextant/evaluation).
