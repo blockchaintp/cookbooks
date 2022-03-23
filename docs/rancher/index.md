@@ -31,16 +31,16 @@ with the exception of Daml support which is subject to our
 ## Install Sextant
 
 Log in to Rancher and select the cluster you want to install Sextant on,
-in our example, this will be the local Rancher cluster.
+in our example, this will be the local Rancher cluster:
 
 ![Local Rancher cluster](../images/rancher/local-cluster.png)
 
 From the left menu, select _Apps & Marketplace_ and then _Charts_.
-Choose the Sextant chart from the list of partner charts.
+Choose the Sextant chart from the list of partner charts:
 
 ![Partner Charts](../images/rancher/partner-charts.png)
 
-This will take you to the following screen.
+This will take you to the following screen:
 
 ![Namespace and Name](../images/rancher/install-metadata.png)
 
@@ -75,7 +75,7 @@ on the bottom right of the page.
 
 Rancher will now install Sextant on your local cluster, it may take a few
 minutes for the Sextant images to be pulled down to your cluster from our
-private repo.
+private repo:
 
 ![Installing Sextant](../images/rancher/installing-sextant.png)
 
@@ -110,35 +110,34 @@ Then run the first command from the installation NOTES. In our example this is:
 kubectl describe pod/sextant-0 --namespace sextant | grep INITIAL_
 ```
 
-This will display the initial user/password combination for the your Sextant
+This will display the initial username/password combination for the your Sextant
 installation.
 
 !!!Important
-    Make sure you save this password, as it will not be possible to retrieve
+    Make sure you save this combination, as it will not be possible to retrieve
     it if the Sextant deployment is restarted.
 
 ![Initial Password](../images/rancher/initial-password.png)
 
-Now run the second command from the install notes. In our example this is:
+Now run the second command from the installation NOTES. In our example this is:
 
-```
+```text
 export POD_NAME=$(kubectl get pods -l "app.kubernetes.io/name=sextant" -o jsonpath="{.items[0].metadata.name}")
 echo "Visit http://127.0.0.1:8080 to use your application"
 kubectl port-forward $POD_NAME 8080:80
 ```
 
 This will set up a port forward to your Sextant install, and make it accessible
-on your local machine at [http://127.0.0.1:8080](http://127.0.0.1:8080)
+on your local machine:
 
 ![Port forward](../images/rancher/port-forward.png)
 
-Switch back to your browser and open the URL show in the terminal output. In
-our case [http://127.0.0.1:8080](http://127.0.0.1:8080)
+Switch back to your browser and open the URL shown in the terminal output. In
+our example this is [http://127.0.0.1:8080](http://127.0.0.1:8080). This will
+load the Sextant UI where you can log in using the initial username/password
+retrieved earlier:
 
-This will load the Sextant UI and you can log in using the initial password
-retrieved earlier
-
-![Sextant UI](../images/rancher/sextant-ui.png)
+![Sextant Login](../images/rancher/sextant-login.png)
 
 At this point you are all set to start using Sextant to deploy and manage
 blockchain networks.
