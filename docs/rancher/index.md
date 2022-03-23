@@ -82,7 +82,7 @@ private repo:
 Once the installation has completed, you will see the NOTES from the
 installation. In our example these are:
 
-```
+```text
 NOTES:
 1. Get the initial Sextant application username and password by running this
 command kubectl describe pod/sextant-0 --namespace sextant | grep INITIAL_
@@ -98,7 +98,7 @@ window to finish setting up Sextant.
 Once you've opened a local terminal, start by confirming that you can connect to
 your Kubernetes cluster using `kubectl` by running this command:
 
-```
+```text
 kubectl get pods
 ```
 
@@ -106,7 +106,7 @@ kubectl get pods
 
 Then run the first command from the installation NOTES. In our example this is:
 
-```json
+```text
 kubectl describe pod/sextant-0 --namespace sextant | grep INITIAL_
 ```
 
@@ -140,10 +140,8 @@ retrieved earlier:
 ![Sextant Login](../images/rancher/sextant-login.png)
 
 At this point you are all set to start using Sextant to deploy and manage
-blockchain networks.
-
-The first thing you will need to do is add a cluster to Sextant. Detailed
-instructions on how to do this can be found
+blockchain networks. The first thing you will need to do is add a cluster to
+Sextant. Detailed instructions on how to do this can be found
 [here](https://docs.blockchaintp.com/en/latest/sextant/clusters/management/).
 
 !!!Note
