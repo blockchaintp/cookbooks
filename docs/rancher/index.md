@@ -3,30 +3,30 @@
 Recipe for installing the Sextant Community Edition on a SUSE Rancher managed
 Kubernetes cluster to deploy and manage blockchain networks.
 
-## Prerequisites
-
-* [SUSE Rancher](https://www.suse.com/products/suse-rancher/) v2.6 or later with
-a Kubernetes cluster v1.19 or later
-* [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) configured to
-access your cluster
-
-## Sign up for an evaluation licence
-
-To install the Sextant Community edition, you will need user credentials
-supplied by BTP. If you don't have these, you can request them
-[here](https://www.blockchaintp.com/sextant/suse-rancher).
-
-### License
+## License
 
 Use of the Sextant Community Edition is governed by our
 [Marketplace EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Marketplace)+End+User+License+Agreement.pdf)
 with the exception of Daml support which is subject to our
 [Evaluation EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Evaluation)+End+User+License+Agreement.pdf).
 
-### Useful links
+## Useful links
 
 * [Sextant Overview](https://www.blockchaintp.com/sextant)
 * [Sextant Docs](https://docs.blockchaintp.com/en/latest/sextant/overview/)
+
+## Prerequisites
+
+To install the Sextant Community edition, you will need to obtain user
+credentials from BTP. If you don't have these already, you can request them
+[here](https://www.blockchaintp.com/sextant/suse-rancher).
+
+You will also need the following:
+
+* [SUSE Rancher](https://www.suse.com/products/suse-rancher/) v2.6 or later with
+a Kubernetes cluster v1.19 or later
+* [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) configured to
+access your cluster
 
 ## Install Sextant
 
