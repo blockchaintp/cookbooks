@@ -10,7 +10,7 @@ Use of the Sextant Community Edition is governed by our
 with the exception of Daml support which is subject to our
 [Evaluation EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Evaluation)+End+User+License+Agreement.pdf).
 
-## Useful links
+## Useful Links
 
 * [Sextant Overview](https://www.blockchaintp.com/sextant)
 * [Sextant Docs](https://docs.blockchaintp.com/en/latest/sextant/overview/)
@@ -30,8 +30,8 @@ access your cluster
 
 ## Install Sextant
 
-Log in to Rancher and select the cluster you want to install Sextant on,
-in our example, this will be the local Rancher cluster:
+Log in to Rancher and select the cluster you want to install Sextant on.
+In our example, this will be the local Rancher cluster:
 
 ![Local Rancher cluster](../images/rancher/local-cluster.png)
 
@@ -44,28 +44,28 @@ This will take you to the following screen:
 
 ![Namespace and Name](../images/rancher/install-metadata.png)
 
-Here you need to specify the _namespace_ and _name_ for your Sextant
-installatation. In this example we elect to use `sextant` in both cases.
+Here, you will need to specify the _namespace_ and _name_ for your Sextant
+installation. In our example, we will use `sextant` in both cases.
 
 !!!Note
-    If the namespace doesn't exist the installation will automatically create
-    this.
-
-Now click the _Next_ button on the bottom right of the page.
+    If the namespace doesn't exist, the installation process will automatically
+    create this for you.
 
 !!!Important
-    Make sure you have your BTP supplied credentials ready. As noted above,
-    you can request these
+    Make sure you have your BTP supplied credentials ready before continuing to
+    the next step. As noted above, you can request these
     [here](https://www.blockchaintp.com/sextant/suse-rancher).
+
+Now, click the _Next_ button on the bottom right of the page:
 
 ![User Credentials](../images/rancher/user-credentials.png)
 
-On this screen you can configure your Sextant installation. On the lefthand side
-there are three options:
+On this screen you can configure your Sextant installation. On the left hand
+side, you will find three options:
 
 * **User Credentials** - The only required fields are the `Username` and
-`Password` credentials you obtained from BTP. These are entered here.
-* **Ingress Settings** - If you'd like to enable an ingress for Sextant you can
+`Password` credentials that you obtained from BTP. These are entered here.
+* **Ingress Settings** - If you'd like to enable an ingress for Sextant, you can
 specify this here. This is optional.
 * **Database Settings** - If you'd like to use an external Postgres database,
 you can specify this here. This is also optional.
@@ -73,14 +73,14 @@ you can specify this here. This is also optional.
 Enter your user credentials in the form, and then click the _Install_ button
 on the bottom right of the page.
 
-Rancher will now install Sextant on your local cluster, it may take a few
+Rancher will now install Sextant on your local cluster. It may take a few
 minutes for the Sextant images to be pulled down to your cluster from our
 private repo:
 
 ![Installing Sextant](../images/rancher/installing-sextant.png)
 
 Once the installation has completed, you will see the NOTES from the
-installation. In our example these are:
+installation. In our example, these are:
 
 ```text
 NOTES:
@@ -92,7 +92,7 @@ echo "Visit http://127.0.0.1:8080 to use your application"
 kubectl port-forward $POD_NAME 8080:80
 ```
 
-Make a note of these instructions as we will now switch to a local terminal
+Make a note of these instructions, as we will now switch to a local terminal
 window to finish setting up Sextant.
 
 Once you've opened a local terminal, start by confirming that you can connect to
@@ -104,7 +104,8 @@ kubectl get pods
 
 ![Check kubectl](../images/rancher/check-kubectl.png)
 
-Then run the first command from the installation NOTES. In our example this is:
+Then, run the first command from the installation NOTES.
+In our example, this is:
 
 ```bash
 kubectl describe pod/sextant-0 --namespace sextant | grep INITIAL_
@@ -119,7 +120,8 @@ installation.
 
 ![Initial Password](../images/rancher/initial-password.png)
 
-Now run the second command from the installation NOTES. In our example this is:
+Now, run the second command from the installation NOTES.
+In our example, this is:
 
 ```bash
 export POD_NAME=$(kubectl get pods -l "app.kubernetes.io/name=sextant" -o jsonpath="{.items[0].metadata.name}")
@@ -133,22 +135,22 @@ on your local machine:
 ![Port forward](../images/rancher/port-forward.png)
 
 Switch back to your browser and open the URL shown in the terminal output. In
-our example this is [http://127.0.0.1:8080](http://127.0.0.1:8080). This will
+our example, this is [http://127.0.0.1:8080](http://127.0.0.1:8080). This will
 load the Sextant UI where you can log in using the initial username/password
 retrieved earlier:
 
 ![Sextant Login](../images/rancher/sextant-login.png)
 
-At this point you are all set to start using Sextant to deploy and manage
+At this point, you are all set to start using Sextant to deploy and manage
 blockchain networks. The first thing you will need to do is add a cluster to
 Sextant. Detailed instructions on how to do this can be found
 [here](https://docs.blockchaintp.com/en/latest/sextant/clusters/management/).
 
 !!!Note
-    Assuming that your local cluster has at least four nodes you can add this to
-    Sextant.
+    Assuming that your local cluster has at least four nodes, you can add this
+    to Sextant and use it to deploy a four node distributed ledger network.
 
 !!!Important
-    To access all Sextant's features you can also apply for a Sextant
+    To access all Sextant's features, you can also apply for a Sextant
     Enterprise Edition evaluation
     [here](https://www.blockchaintp.com/sextant/evaluation).
