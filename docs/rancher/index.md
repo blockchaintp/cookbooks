@@ -98,7 +98,7 @@ window to finish setting up Sextant.
 Once you've opened a local terminal, start by confirming that you can connect to
 your Kubernetes cluster using `kubectl` by running this command:
 
-```text
+```bash
 kubectl get pods
 ```
 
@@ -106,7 +106,7 @@ kubectl get pods
 
 Then run the first command from the installation NOTES. In our example this is:
 
-```text
+```bash
 kubectl describe pod/sextant-0 --namespace sextant | grep INITIAL_
 ```
 
@@ -121,7 +121,7 @@ installation.
 
 Now run the second command from the installation NOTES. In our example this is:
 
-```text
+```bash
 export POD_NAME=$(kubectl get pods -l "app.kubernetes.io/name=sextant" -o jsonpath="{.items[0].metadata.name}")
 echo "Visit http://127.0.0.1:8080 to use your application"
 kubectl port-forward $POD_NAME 8080:80
