@@ -110,7 +110,7 @@ Then run the first command from the installation NOTES. In our example this is:
 kubectl describe pod/sextant-0 --namespace sextant | grep INITIAL_
 ```
 
-This will display the initial username/password combination for the your Sextant
+This will display the initial username/password combination for your Sextant
 installation.
 
 !!!Important
