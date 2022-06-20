@@ -220,7 +220,7 @@ helm -n metallb-system install metallb metallb/metallb \
   command to add BTP repo:
 
 ```bash
-helm repo add sextant https://btp-charts-stable.s3.amazonaws.com/charts/
+helm repo add btp-stable https://btp-charts-stable.s3.amazonaws.com/charts/
 ```
 
 * Create namespace `sextant` for Sextant:
@@ -246,39 +246,17 @@ kubectl create secret docker-registry btp-lic \
 ```
 
 * Create Sextant Enterprise Edition helm chart values
-  file `values-equinix-demo.yaml`:
+  file `values-sextant.yaml`:
 
 ```yaml
-sextant:
-  imagePullSecrets:
-    enabled: true
-    value:
-      - name: btp-lic
-  postgres:
-    enabled: true
-    image:
-      repository: postgres
-      tag: 11
-    user: postgres
-    host: localhost
-    database: postgres
-    port: 5432
-    password: postgres
-    tls:
-    persistence:
-      enabled: true
-      annotations: {}
-      accessModes:
-        - "ReadWriteOnce"
-      storageClass: "longhorn"
-      size: "40Gi"
-global:
-  storageClass: longhorn
-persistence:
+edition: enterprise
+imagePullSecrets:
   enabled: true
-  size: 40Gi
-networkPolicy:
-  enabled: true
+  value:
+  - name: btp-lic
+postgres:
+  persistence:
+    enabled: true
 ```
 
 ### Install Sextant
@@ -286,13 +264,13 @@ networkPolicy:
 * Install Sextant using `helm`:
 
 ```bash
-helm install -f values-equinix-demo.yaml equinix-demo sextant/sextant-enterprise
+helm install -f values-sextant.yaml sextant btp-stable/sextant
 ```
 
 The output should look something like this:
 
 ```text
-NAME: equinix-demo
+NAME: sextant
 LAST DEPLOYED: Mon Aug 23 00:51:36 2021
 NAMESPACE: sextant
 STATUS: deployed
@@ -300,7 +278,7 @@ REVISION: 1
 TEST SUITE: None
 NOTES:
 1. Get the initial Sextant application username and password by running this command
-  kubectl describe pod/equinix-demo-sextant-enterprise-0|grep INITIAL_
+  kubectl describe pod/sextant-0|grep INITIAL_
 
 2. Get the application URL by running these commands:
   export POD_NAME=$(kubectl get pods -l "app=sextant-enterprise" -o jsonpath="{.items[0].metadata.name}")
@@ -314,7 +292,7 @@ NOTES:
 Run this command:
 
 ```bash
-kubectl describe pod/equinix-demo-sextant-enterprise-0|grep INITIAL_
+kubectl describe pod/sextant-0|grep INITIAL_
 ```
 
 Make a note of the username and password for admin access to
@@ -329,7 +307,7 @@ Note that these details will persist even if you restart or delete/reinstall
 You can use port forwarding using this command:
 
 ```bash
-kubectl port-forward equinix-demo-sextant-enterprise-0 8080:80
+kubectl port-forward sextant-0 8080:80
 ```
 
 Connect to *Sextant | Enterprise*
@@ -347,8 +325,8 @@ you will need to create a load balancer.
 up a Kubernetes ingress controller for long term access._)
 
 ```bash
-kubectl expose pod/equinix-demo-sextant-enterprise-0 --type=LoadBalancer \
-  --name=equinix-demo-sextant-enterprise-0-lb --port=80 --target-port=80
+kubectl expose pod/sextant-0 --type=LoadBalancer \
+  --name=sextant-0-lb --port=80 --target-port=80
 ```
 
 Obtain external IP:
