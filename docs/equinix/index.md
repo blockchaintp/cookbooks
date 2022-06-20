@@ -1,11 +1,11 @@
 # Equinix Metal Cookbook
 
 Recipe for setting up a Kubernetes cluster on Equinix Metal and installing
-Sextant Enterprise Edition to deploy and manage blockchain networks.
+Sextant Community Edition to deploy and manage blockchain networks.
 
 ## Prerequisites
 
-To install the Sextant Enterprise Edition on Equinix Metal, you will need to
+To install the Sextant Community Edition on Equinix Metal, you will need to
 obtain user credentials from BTP. If you don't have these already, you can
 request them by signing up for an evaluation
 [here](https://www.blockchaintp.com/sextant/equinix-metal).
@@ -211,7 +211,7 @@ helm -n metallb-system install metallb metallb/metallb \
   -f <config file from step 2.yaml>
 ```
 
-## Installing Sextant Enterprise Edition on Equinix Metal
+## Installing Sextant Community Edition on Equinix Metal
 
 ### Prepare Cluster
 
@@ -245,11 +245,11 @@ kubectl create secret docker-registry btp-lic \
   --docker-password=$CLIENT_PWORD --docker-email=$CLIENT_EMAIL
 ```
 
-* Create Sextant Enterprise Edition helm chart values
+* Create Sextant Community Edition helm chart values
   file `values-sextant.yaml`:
 
 ```yaml
-edition: enterprise
+edition: community
 imagePullSecrets:
   enabled: true
   value:
@@ -281,7 +281,7 @@ NOTES:
   kubectl describe pod/sextant-0|grep INITIAL_
 
 2. Get the application URL by running these commands:
-  export POD_NAME=$(kubectl get pods -l "app=sextant-enterprise" -o jsonpath="{.items[0].metadata.name}")
+  export POD_NAME=$(kubectl get pods -l "app=sextant" -o jsonpath="{.items[0].metadata.name}")
   echo "Visit http://127.0.0.1:8080 to use your application"
   kubectl port-forward $POD_NAME 8080:80
 
@@ -296,9 +296,9 @@ kubectl describe pod/sextant-0|grep INITIAL_
 ```
 
 Make a note of the username and password for admin access to
-*Sextant | Enterprise*. You will need these to log into *Sextant | Enterprise*.
+*Sextant | Community*. You will need these to log into *Sextant | Community*.
 Note that these details will persist even if you restart or delete/reinstall
-*Sextant | Enterprise*.
+*Sextant | Community*.
 
 ### Accessing Sextant
 
@@ -310,7 +310,7 @@ You can use port forwarding using this command:
 kubectl port-forward sextant-0 8080:80
 ```
 
-Connect to *Sextant | Enterprise*
+Connect to *Sextant | Community*
 
 ```bash
 http://localhost:8080
