@@ -7,7 +7,7 @@ Kubernetes cluster to deploy and manage blockchain networks.
 
 Use of the Sextant Community Edition is governed by our
 [Marketplace EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Marketplace)+End+User+License+Agreement.pdf)
-with the exception of Daml support which is subject to our
+with the exception of Chronicle and Daml support which is subject to our
 [Evaluation EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Evaluation)+End+User+License+Agreement.pdf).
 
 ## Useful Links
@@ -24,9 +24,9 @@ credentials from BTP. If you don't have these already, you can request them
 You will also need the following:
 
 * [SUSE Rancher](https://www.suse.com/products/suse-rancher/) v2.6 or later with
-a Kubernetes cluster v1.19 or later
+  a Kubernetes cluster v1.19 or later
 * [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) configured to
-access your cluster
+  access your cluster
 
 ## Install Sextant
 
@@ -64,11 +64,11 @@ On this screen you can configure your Sextant installation. On the left hand
 side, you will find three options:
 
 * **User Credentials** - The only required fields are the `Username` and
-`Password` credentials that you obtained from BTP. These are entered here.
+  `Password` credentials that you obtained from BTP. These are entered here.
 * **Ingress Settings** - If you'd like to enable an ingress for Sextant, you can
-specify this here. This is optional.
+  specify this here. This is optional.
 * **Database Settings** - If you'd like to use an external Postgres database,
-you can specify this here. This is also optional.
+  you can specify this here. This is also optional.
 
 Enter your user credentials in the form, and then click the _Install_ button
 on the bottom right of the page.
