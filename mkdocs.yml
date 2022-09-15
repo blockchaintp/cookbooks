@@ -1,5 +1,5 @@
-site_name: BTP Cookbooks
-theme: readthedocs
+site_name: cookbooks
+theme: material
 copyright: Copyright &copy; 2022 Blockchain Technology Partners
 extra_css: [extra.css]
 markdown_extensions:
@@ -8,6 +8,6 @@ markdown_extensions:
   - toc:
       permalink: true
 nav:
-  - Home: index.md
+  - Overview: index.md
   - Equinix Metal: equinix/index.md
   - SUSE Rancher: rancher/index.md
