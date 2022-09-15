@@ -15,6 +15,13 @@ You will also need the up to date versions of the following tools installed -
 * [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
 * [helm](https://helm.sh/docs/intro/install/#through-package-managers)
 
+## License
+
+Use of the Sextant Community Edition is governed by our
+[Marketplace EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Marketplace)+End+User+License+Agreement.pdf)
+with the exception of Chronicle and Daml support which is subject to our
+[Evaluation EULA](https://sextant-resources.s3.amazonaws.com/agreements/Blockchain+Technology+Partners+Limited+(Evaluation)+End+User+License+Agreement.pdf).
+
 ## Setting up for Equinix Metal
 
 * Log in to [Equinix Metal Portal](https://console.equinix.com/)
