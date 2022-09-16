@@ -9,5 +9,9 @@ markdown_extensions:
       permalink: true
 nav:
   - Overview: index.md
+#  - Chronicle:
+#    - Overview: chronicle/index.md
+#    - Domain1: chronicle/domain1.md
+#    - Domain2: chronicle/domain2.md
   - Equinix Metal: equinix/index.md
   - SUSE Rancher: rancher/index.md

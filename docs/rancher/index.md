@@ -85,7 +85,8 @@ installation. In our example, these are:
 ```text
 NOTES:
 1. Get the initial Sextant application username and password by running this
-command kubectl describe pod/sextant-0 --namespace sextant | grep INITIAL_
+command
+kubectl describe pod/sextant-0 --namespace sextant | grep INITIAL_
 2. Get the application URL by running these commands:
 export POD_NAME=$(kubectl get pods -l "app.kubernetes.io/name=sextant" -o jsonpath="{.items[0].metadata.name}")
 echo "Visit http://127.0.0.1:8080 to use your application"
@@ -129,8 +130,8 @@ echo "Visit http://127.0.0.1:8080 to use your application"
 kubectl port-forward $POD_NAME 8080:80
 ```
 
-This will set up a port forward to your Sextant install, and make it accessible
-on your local machine:
+This will set up a port forward to your Sextant installation, and make it
+accessible on your local machine:
 
 ![Port forward](../images/rancher/port-forward.png)
 
