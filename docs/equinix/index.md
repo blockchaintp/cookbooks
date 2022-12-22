@@ -8,7 +8,7 @@ Sextant Community Edition to deploy and manage blockchain networks.
 To install the Sextant Community Edition on Equinix Metal, you will need to
 obtain user credentials from BTP. If you don't have these already, you can
 request them by signing up for an evaluation
-[here](https://www.blockchaintp.com/sextant/equinix-metal).
+[here](https://btp.works/sextant/equinix-metal).
 
 You will also need the up to date versions of the following tools installed -
 

@@ -12,14 +12,14 @@ with the exception of Chronicle and Daml support which is subject to our
 
 ## Useful Links
 
-* [Sextant Overview](https://www.blockchaintp.com/sextant)
-* [Sextant Docs](https://docs.blockchaintp.com/en/latest/sextant/overview/)
+* [Sextant Overview](https://btp.works/sextant)
+* [Sextant Docs](https://docs.btp.works/sextant/overview/)
 
 ## Prerequisites
 
 To install the Sextant Community edition, you will need to obtain user
 credentials from BTP. If you don't have these already, you can request them
-[here](https://www.blockchaintp.com/sextant/suse-rancher).
+[here](https://btp.works/sextant/suse-rancher).
 
 You will also need the following:
 
@@ -54,7 +54,7 @@ installation. In our example, we will use `sextant` in both cases.
 !!!Important
     Make sure you have your BTP supplied credentials ready before continuing to
     the next step. As noted above, you can request these
-    [here](https://www.blockchaintp.com/sextant/suse-rancher).
+    [here](https://btp.works/sextant/suse-rancher).
 
 Now, click the _Next_ button on the bottom right of the page:
 
@@ -144,7 +144,7 @@ retrieved earlier:
 At this point, you are all set to start using Sextant to deploy and manage
 blockchain networks. The first thing you will need to do is add a cluster to
 Sextant. Detailed instructions on how to do this can be found
-[here](https://docs.blockchaintp.com/en/latest/sextant/clusters/management/).
+[here](https://docs.btp.works/sextant/clusters/management/).
 
 !!!Note
     Assuming that your local cluster has at least four nodes, you can add this
@@ -153,4 +153,4 @@ Sextant. Detailed instructions on how to do this can be found
 !!!Important
     To access all Sextant's features, you can also apply for a Sextant
     Enterprise Edition evaluation
-    [here](https://www.blockchaintp.com/sextant/evaluation).
+    [here](https://btp.works/sextant/evaluation).
