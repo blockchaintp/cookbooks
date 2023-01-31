@@ -1,6 +1,6 @@
 # Equinix Metal Cookbook
 
-Recipe for setting up a Kubernetes cluster on Equinix Metal and installing
+Recipe for setting up a Kubernetes cluster on Equinix Metal, and installing
 Sextant Community Edition to deploy and manage blockchain networks.
 
 ## Prerequisites
@@ -41,13 +41,14 @@ with the exception of Chronicle and Daml support which is subject to our
 * Select the number of servers and server names. We recommend using at least
   three servers as controllers for HA when creating Kubernetes cluster, and any
   number after can be used as agent nodes.
-  (**Note**: in our project we used three servers for the Admin cluster for
-  Sextant and between 5-6 for the three blockchain network
-  clusters).
 * Optionally `Add user data` (_handy feature to customize server provisioning_).
 * Optionally `Configure IPs` (_we kept defaults_).
 * Optionally `Customize SSH keys` (_we are using keys already configured for the
   project_).
+
+!!!Note
+  In our project we used three servers for the admin cluster for Sextant and
+  minimum of four for the three blockchain network clusters.
 
 ## Set up BGP
 
@@ -55,7 +56,9 @@ with the exception of Chronicle and Daml support which is subject to our
   [Local BGP](https://metal.equinix.com/developers/docs/networking/local-global-bgp/)
   for the project.
 * For each deployed server under Details/BGP/Manage, click on `Enable BGP`
-  (_Note: you should enable BGP on at least two servers, preferably all_).
+
+!!!Note
+    You should enable BGP on at least two servers, preferably all.
 
 ## Set up [RKE2 Kubernetes cluster](https://rancher.com/docs/rancher/v2.5/en/installation/resources/k8s-tutorials/ha-rke2/)
 
@@ -91,19 +94,21 @@ token: <token from server node>
 ```
 
 * To access the cluster from your workstation, copy the kubeconfig file
-  `/etc/rancher/rke2/rke2.yaml` to your localhost, replace `server:
-  [LOAD-BALANCER-DNS]:6443` with server external IP address.
+  `/etc/rancher/rke2/rke2.yaml` to your localhost,
+  replace `server: [LOAD-BALANCER-DNS]:6443` with server external IP address.
 
-**Note**: We have tried setting up BGP/bird on systems to use for cluster load
-balancing, only to find that there is a conflict with MetalLB we plan to use for
-our deployments ingress. For our project, we opted to use individual system IPs
-for cluster access. If the first system fails, swap that IP of the failed RKE2
-Server with another RKE2 Server node in `/etc/rancher/rke2/config.yaml` on all
-nodes, as well your local workstation kubeconfig and Sextant.
-For a Kubernetes enterprise cluster, we strongly recommend setting up a load
-balancer for the cluster access. One solution is to use Equinix guide to set up
-[HAProxy load balancer](https://metal.equinix.com/developers/guides/load-balancing-ha/)
-outside the clusters.
+!!!Note
+    We have tried setting up BGP/bird on systems to use for cluster load
+    balancing, only to find that there is a conflict with MetalLB which we plan
+    to use for our deployments ingress. For our project, we opted to use
+    individual system IPs for cluster access. If the first system fails, swap
+    that IP of the failed RKE2 Server with another RKE2 Server node in
+    `/etc/rancher/rke2/config.yaml` on all nodes, as well your local workstation
+    kubeconfig and Sextant. For a Kubernetes enterprise cluster, we strongly
+    recommend setting up a load balancer for the cluster access.
+    One solution is to use Equinix guide to set up
+    [HAProxy load balancer](https://metal.equinix.com/developers/guides/load-balancing-ha/)
+    outside the clusters.
 
 ### Set up the remaining RKE2 Server or Agent nodes
 
@@ -284,7 +289,8 @@ STATUS: deployed
 REVISION: 1
 TEST SUITE: None
 NOTES:
-1. Get the initial Sextant application username and password by running this command
+1. Get the initial Sextant application username and password by running this
+command
   kubectl describe pod/sextant-0|grep INITIAL_
 
 2. Get the application URL by running these commands:
@@ -302,10 +308,9 @@ Run this command:
 kubectl describe pod/sextant-0|grep INITIAL_
 ```
 
-Make a note of the username and password for admin access to
-*Sextant | Community*. You will need these to log into *Sextant | Community*.
-Note that these details will persist even if you restart or delete/reinstall
-*Sextant | Community*.
+Make a note of the username and password for admin access to Sextant. You will
+need these to log into Sextant. Note that these details will persist even if you
+restart or delete/reinstall Sextant.
 
 ### Accessing Sextant
 
@@ -317,7 +322,7 @@ You can use port forwarding using this command:
 kubectl port-forward sextant-0 8080:80
 ```
 
-Connect to *Sextant | Community*
+Connect to Sextant:
 
 ```bash
 http://localhost:8080
@@ -328,8 +333,9 @@ http://localhost:8080
 If you want a persistent connection to your Sextant instance,
 you will need to create a load balancer.
 
-(_Note that while this is acceptable for this evaluation we recommend setting
-up a Kubernetes ingress controller for long term access._)
+!!!Note
+    While this is acceptable for this evaluation we recommend setting
+    up a Kubernetes ingress controller for long term access.
 
 ```bash
 kubectl expose pod/sextant-0 --type=LoadBalancer \
