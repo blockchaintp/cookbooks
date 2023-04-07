@@ -1,7 +1,7 @@
 # SUSE Rancher Cookbook
 
-Recipe for installing the Sextant Community Edition on a SUSE Rancher managed
-Kubernetes cluster to deploy and manage blockchain networks.
+Recipe for installing Sextant on a SUSE Rancher managed
+Kubernetes cluster.
 
 ## License
 
