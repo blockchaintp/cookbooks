@@ -1,6 +1,6 @@
 # SUSE Rancher Cookbook
 
-Recipe for installing Sextant on a SUSE Rancher managed
+A quick start guide to installing Sextant on a SUSE Rancher managed
 Kubernetes cluster.
 
 ## License

@@ -1,7 +1,8 @@
+---
 site_name: cookbooks
 site_url: https://docs.btp.works/cookbooks
 theme: material
-copyright: Copyright &copy; 2022 BTP
+copyright: Copyright &copy; 2023 BTP
 extra_css: [extra.css]
 markdown_extensions:
   - attr_list
@@ -10,5 +11,8 @@ markdown_extensions:
       permalink: true
 nav:
   - Overview: index.md
-  - Equinix Metal: equinix/index.md
-  - SUSE Rancher: rancher/index.md
+  - Chronicle:
+      - SUSE Rancher: chronicle/rancher.md
+  - Sextant:
+      - Equinix Metal: sextant/equinix.md
+      - SUSE Rancher: sextant/rancher.md

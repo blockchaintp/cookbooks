@@ -38,11 +38,7 @@ click on the _Install_ button on the top right of the page:
 ![Chart Details](../images/chronicle/rancher/chart-details.png)
 
 Here, you will need to specify the _namespace_ for your Chronicle
-installation. In our example, we will use the existing `chronicle` namespace:
-
-!!!Note
-    If the namespace doesn't exist, the installation process will automatically
-    create this for you.
+installation. In our example, we will use the existing `chronicle` namespace.
 
 Now, click the _Next_ button on the bottom right of the page:
 
@@ -63,7 +59,9 @@ side, you will find three options:
 * **Database Settings** - If you'd like to use an external Postgres database,
   you can specify this here. This is also optional.
 
-Click the _Install_ button on the bottom right of the page.
+Click the _Install_ button on the bottom right of the page:
+
+![Install Details](../images/chronicle/rancher/install-details.png)
 
 Rancher will now install Chronicle on your chosen cluster, in our
 example the `local` cluster. It may take a few minutes for the Chronicle
@@ -101,8 +99,7 @@ You can now access the Chronicle GraphQL API using the following URL at [http://
 We will use the [Altair GraphQL client](https://github.com/altair-graphql/altair)
 to test our Chronicle install in the browser
 
-Open the Altair GraphQL client in your browser, and paste in the our
-Chronicle API URL following URL `http://127.0.0.1:9982`
+Open the Altair GraphQL client in your browser, and paste in the following URL `http://127.0.0.1:9982`
 
 ![Altair GraphQL Client](../images/chronicle/rancher/altair.png)
 
