@@ -1,7 +1,9 @@
 # BTP Cookbooks
 
-## Recipes for using and deploying DLTs with Sextant
+## Quick start guides for deploying and using Chronicle and Sextant
 
-[Equinix Metal](equinix){ .md-button }
+[Chronicle on the SUSE Rancher marketplace](chronicle/rancher){ .md-button }
 
-[SUSE Rancher](rancher){ .md-button }
+[Sextant on the SUSE Rancher marketplace](sextant/rancher){ .md-button }
+
+[Sextant on Equinix Metal](sextant/equinix){ .md-button }
