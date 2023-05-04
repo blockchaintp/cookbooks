@@ -13,8 +13,8 @@ Recipe for installing Chronicle from the SUSE Rancher marketplace
 You will need the following:
 
 !!!Important
-    As Chronicle uses Sawtooth as it backing ledger, a minimum of 4 nodes is
-    required for deployment.
+    Chronicle uses Sawtooth as it backing ledger. This means it needs a
+    minimum of 4 standard nodes, each with at least 4 vCPU and 16GB memory.
 
 * 4 node Kubernetes cluster managed by
   [SUSE Rancher](https://www.suse.com/products/suse-rancher/) v2.6 or later.
@@ -89,7 +89,7 @@ Run the following command to set up a port forward:
 kubectl port-forward chronicle-chronicle-0 9982:9982 -n chronicle
 ```
 
-This will set up a port forward to your Sextant install, and make it accessible
+This will set up a port forward to your Chronicle install, and make it accessible
 on your local machine:
 
 ![Port forward](../images/chronicle/rancher/port-forward.png)
