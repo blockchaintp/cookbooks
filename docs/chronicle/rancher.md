@@ -130,8 +130,8 @@ You should now build a docker image using your own domain, or one of
 the [Chronicle examples](https://examples.btp.works).
 
 Once you've built this image, you can edit your running Chronicle deployment
-using SUSE Rancher and update the repository/tag details. Once you confirm these
-changes Rancher will automatically update the deployment.
+using SUSE Rancher and update the repository/tag details. Once you confirm
+these changes Rancher will automatically update the deployment.
 The same process can be employed whenever you rebuild your image.
 
 The [Chronicle Bootstrap](https://github.com/btpworks/chronicle-bootstrap) repo
