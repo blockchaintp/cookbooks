@@ -1,6 +1,7 @@
-# Chronicle SUSE Rancher Cookbook
+# Chronicle Rancher by SUSE Cookbook
 
-Recipe for installing Chronicle from the SUSE Rancher marketplace
+Recipe for installing Chronicle using a helm chart published in the Rancher Apps
+and Marketplace.
 
 ## Useful Links
 
@@ -13,12 +14,12 @@ Recipe for installing Chronicle from the SUSE Rancher marketplace
 You will need the following:
 
 * Kubernetes cluster as specified below, and managed by
-  [SUSE Rancher](https://www.suse.com/products/suse-rancher/) v2.6 or later.
+  [Rancher by SUSE](https://www.suse.com/products/suse-rancher/) v2.6 or later.
 
 * [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) configured to
   access your cluster
 
-### Cluster configuration
+### Cluster Configuration
 
 * **Nodes**: Chronicle uses Sawtooth as its backing ledger. Therefore it needs
   to be deployed on a Kubernetes cluster with a minimum of 4 standard nodes,
@@ -27,9 +28,20 @@ You will need the following:
 * **Persistent Storage**: Chronicle requires a 40Gi PVC if deployed with an
   internal Postgres database, and Sawtooth requires a 40Gi PVC per node.
 
+### Longhorn
+
+If your Kubernetes environment doesn't have persistent storage enabled by
+default then we recommend that you use [Longhorn](https://longhorn.io/).
+Like Chronicle, this can also be installed using a helm chart published in
+the Rancher Apps and Marketplace. Instructions on how to do this can be found
+[here](https://longhorn.io/docs/1.4.2/deploy/install/install-with-rancher/).
+
 ## Chronicle Stack
 
-This diagram illustrates the key layers in the Chronicle stack.
+This diagram illustrates the key layers in the Chronicle stack. By default the
+untyped Chronicle platform is deployed by Rancher but, as discussed at the end
+of these instructions, in practice this should be replaced with a docker image
+that implements your particular Chronicle Domain.
 
 ![Chronicle Stack](../images/chronicle/rancher/chronicle-stack.png)
 
@@ -83,6 +95,8 @@ images to be pulled down, and for the underlying Hyperledger Sawtooth network
 to be deployed as shown below.
 
 ![Installing Chronicle](../images/chronicle/rancher/installing-chronicle.png)
+
+## Test your Deployment
 
 We will now switch to a local terminal window to test our Chronicle install.
 
@@ -155,20 +169,31 @@ response on the right hand side:
 Congratulations, you have successfully installed Chronicle on your Kubernetes
 cluster using Rancher!
 
+## Customize your Deployment
+
 As noted above, by default the Chronicle docker image deployed is
 the [untyped](https://docs.btp.works/chronicle/untyped_chronicle/) version of
-Chronicle. This should only be used for testing deployments.
+Chronicle. However, this should only be used for testing deployments because
+the real power of Chronicle is using it with a custom Chronicle domain.
 
-You should now build a docker image using your own domain, or one of
+Therefore, you should now build a docker image using your own domain, or one of
 the [Chronicle examples](https://examples.btp.works).
 
 Once you've built this image, you can edit your running Chronicle deployment
-using SUSE Rancher and update the repository/tag details in Step 2. Once you
+using Rancher and update the repository/tag details in Step 2. Once you
 confirm these changes Rancher will automatically update the deployment.
-The same process can be employed whenever you rebuild your image.
+The same process can be employed whenever you rebuild your image and release it
+with a new tag.
 
 The [Chronicle Bootstrap](https://github.com/btpworks/chronicle-bootstrap) repo
 provides instructions and example scripts for building your own docker image.
 
 For more details on modeling your domain, see the
 [Chronicle Docs](https://docs.btp.works/chronicle).
+
+## Commercial Support
+
+While both Chronicle and Rancher are 100% open source for mission critical
+or production use we recommend subscribing to Chronicle Enterprise and
+[Rancher Prime by SUSE](https://www.suse.com/solutions/enterprise-container-management/#rancher-product)
+respectively.
